@@ -30,19 +30,27 @@ const Home = () => {
 					placeholder="What needs to be done?"
 					aria-label="Username"
 				/>
-				{newTask.map((task, index) => (
-					<li key={index} className="d-flex justify-content-between list-group-item shadow  bg-body rounded px-5">
-						{task} {""}
-						<span><i className="fa-solid fa-x text-danger delete-icon" onClick={() =>
-							setNewTask(newTask.filter(
-								(task, currentIndex) =>
-									index != currentIndex))
-						}></i></span>
-					</li>
-				))}
+				{newTask.length === 0
+					? (<li className="d-flex 
+				justify-content-center 
+				text-muted list-group-item 
+				shadow  
+				bg-body rounded px-5"
+					>No tasks, add a task</li>
+					)
+					: (newTask.map((task, index) => (
+						<li key={index} className="d-flex justify-content-between list-group-item shadow bg-body rounded px-5">
+							{task} {""}
+							<span><i className="fa-solid fa-x text-danger delete-icon" onClick={() =>
+								setNewTask(newTask.filter(
+									(task, currentIndex) =>
+										index != currentIndex))
+							}></i></span>
+						</li>)
+					))}
 				<div className="text-muted my-1">{newTask.length} tasks</div>
 			</ul>
-		</React.Fragment>
+		</React.Fragment >
 	);
 };
 
